@@ -35,31 +35,30 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void lbDelete_Click(object sender, EventArgs e)
     {
-        SqlDataSource1.DeleteParameters["Te_ID"].DefaultValue = Label1.Text;
-        SqlDataSource1.Delete();
-        try
+        for (int i = 0; i <= GridView1.Rows.Count - 1; i++)
         {
-            SqlDataSource1.DeleteParameters["Te_ID"].DefaultValue = Label1.Text;
-            SqlDataSource1.Delete();
+            CheckBox cbox = (CheckBox)GridView1.Rows[i].FindControl("chkSelectRow");
+            if (cbox.Checked)
+            {
+                try
+                {
+                    SqlDataSource1.DeleteParameters["Te_ID"].DefaultValue = ((Label)GridView1.Rows[i].FindControl("dlTe_ID")).Text;
+                    SqlDataSource1.Delete();
+                }
+                catch (SqlException)
+                {                 
+                    lblTooltip.Text = string.Format("由于外键约束，无法职工号为‘{0}'的教师信息！", ((Label)GridView1.Rows[i].FindControl("dlTe_ID")).Text);
+                }
+            }
         }
-        catch(SqlException)
-        {
-            lblTooltip.Text = "由于外键约束，无法删除该教师信息！";
-        }
-    }
-    protected void Button1_Click(object sender, EventArgs e)
-    {
 
-    }
-
-    protected void Button2_Click(object sender, EventArgs e)
-    {
         
+
+       
     }
 
-    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    protected void Button1_Click1(object sender, EventArgs e)
     {
 
     }
-
 }
