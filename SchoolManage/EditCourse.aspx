@@ -35,7 +35,7 @@
                     <asp:Label ID="txtCs_ID" runat="server" Text='<%# Bind("Cs_ID") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="txtCs_ID" runat="server" Width="50px" MaxLength="9"></asp:TextBox>
+                    <asp:TextBox ID="txtCs_ID" runat="server" Width="80px" MaxLength="9"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfvCs_ID" runat="server" ErrorMessage="不能为空" Text="*" ForeColor="Red" ValidationGroup="Insert" ControlToValidate="txtCs_ID"></asp:RequiredFieldValidator>
                 </FooterTemplate>
             </asp:TemplateField>

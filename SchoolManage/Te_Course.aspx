@@ -9,6 +9,11 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
+    课程名:  
+    <asp:TextBox ID="txtName" runat="server" Width="100px"></asp:TextBox>
+    <asp:Button ID="Button1" runat="server" Text="查询" CausesValidation="False" CommandName="Select" />
+    <br />
+    <br />
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Cs_ID" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" AllowPaging="True" ShowFooter="True" Font-Size="12px">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
@@ -115,7 +120,7 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:schoolConnectionString %>"
         DeleteCommand="DELETE FROM [Course] WHERE [Cs_ID] = @Cs_ID"
         InsertCommand="INSERT INTO [Course] ([Cs_ID], [Cs_Name], [Cs_Time], [Cs_Place], [Cs_Year], [Cs_Semster], [Te_ID]) VALUES (@Cs_ID, @Cs_Name, @Cs_Time, @Cs_Place, @Cs_Year, @Cs_Semster, @Te_ID)"
-        SelectCommand="SELECT [Cs_ID], [Cs_Name], [Cs_Time], [Cs_Place], [Cs_Year], [Cs_Semster] FROM [Course] WHERE [Te_ID] = @Te_ID"
+        SelectCommand="SELECT [Cs_ID], [Cs_Name], [Cs_Time], [Cs_Place], [Cs_Year], [Cs_Semster] FROM [Course] WHERE [Te_ID] = @Te_ID AND (Cs_Name LIKE '%' + @Cs_Name + '%')"
         UpdateCommand="UPDATE [Course] SET [Cs_Name] = @Cs_Name, [Cs_Time] = @Cs_Time, [Cs_Place] = @Cs_Place, [Cs_Year] = @Cs_Year, [Cs_Semster] = @Cs_Semster WHERE [Cs_ID] = @Cs_ID">
         <DeleteParameters>
             <asp:Parameter Name="Cs_ID" Type="String" />
@@ -139,6 +144,7 @@
         </UpdateParameters>
         <SelectParameters>
             <asp:Parameter Name="Te_ID" Type="String" />
+            <asp:ControlParameter ControlID="txtName" Name="Cs_Name" PropertyName="Text" Type="String" ConvertEmptyStringToNull="false" />
         </SelectParameters>
     </asp:SqlDataSource>
 </asp:Content>

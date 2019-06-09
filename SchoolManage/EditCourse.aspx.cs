@@ -12,7 +12,7 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        lblTooltip.Text = "";
     }
     protected void lbInsert_Click(object sender, EventArgs e)
     {
@@ -48,7 +48,7 @@ public partial class _Default : System.Web.UI.Page
                 }
                 catch (SqlException)
                 {
-                    lblTooltip.Text = string.Format("无法删除课程号为‘{0}'的课程信息！", ((Label)GridView1.Rows[i].FindControl("dlTe_ID")).Text);
+                    lblTooltip.Text = string.Format("无法退选课程号为‘{0}'的课程！", ((Label)GridView1.Rows[i].FindControl("txtCs_ID")).Text);
                 }
             }
         }
