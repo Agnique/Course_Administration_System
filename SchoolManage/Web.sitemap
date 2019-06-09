@@ -6,20 +6,20 @@
     </siteMapNode>
     
     <siteMapNode title="系统管理" description="Sysuser" url="">
-      <siteMapNode title="新增系统用户" description="Add Sysuser" url="AddUser.aspx" />
-      <siteMapNode title="编辑系统用户" description="Edit Sysuser" url="EditUser.aspx" />
-      <siteMapNode title="新增教师" description="Add Teacher" url="AddTeacher.aspx" />
-      <siteMapNode title="编辑教师信息" description="Edit Teacher" url="EditTeacher.aspx" />
+      <siteMapNode title="系统用户管理" description="Edit Sysuser" url="EditUser.aspx" />
+      <siteMapNode title="教师信息管理" description="Edit Teacher" url="EditTeacher.aspx" />
+      <siteMapNode title="学生信息管理" description="Edit Teacher" url="EditStudent.aspx" />
+      <siteMapNode title="课程信息管理" description="Edit Teacher" url="EditCourse.aspx" />
     </siteMapNode>
 
-    <siteMapNode title="教师信息管理"  description="Teacher" url="">
+    <siteMapNode title="教师个人中心"  description="Teacher" url="">
       <siteMapNode title="编辑个人信息" description="Add Course" url="Te_Info.aspx" />
       <siteMapNode title="开课管理" description="Add Course" url="Te_Course.aspx" />
       <siteMapNode title="作业发布" description="Handout Homework" url="Te_Homework.aspx" />
       <siteMapNode title="作业批改" description="Grade Homework" url="Grade_Homework.aspx" />
     </siteMapNode>
 
-    <siteMapNode title="学生信息管理"  description="Student" url="">
+    <siteMapNode title="学生个人中心"  description="Student" url="">
       <siteMapNode title="在线选课" description="Register Course" url="Register_Course.aspx" />
       <siteMapNode title="已选查询" description="Registered Course" url="Stu_Course.aspx" />
       <siteMapNode title="查看作业" description="Check Homework" url="Stu_Homework.aspx" />

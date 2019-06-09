@@ -1,15 +1,16 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="EditTeacher.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="EditStudent.aspx.cs" Inherits="_Default" %>
+
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="header">
         <strong>
-            <asp:Label ID="Label1" runat="server" CssClass="auto-style1" Text="教师信息管理"></asp:Label>
+            <asp:Label ID="Label1" runat="server" CssClass="auto-style1" Text="学生信息管理"></asp:Label>
         </strong>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
-    职工号:   
-    <asp:TextBox ID="txtTe_ID" runat="server" Width="50px"></asp:TextBox>
+    学号:   
+    <asp:TextBox ID="txtStu_ID" runat="server" Width="50px"></asp:TextBox>
     &nbsp;姓名：
     <asp:TextBox ID="txtName" runat="server" Width="50px"></asp:TextBox>
     &nbsp;学院: 
@@ -17,7 +18,7 @@
     <asp:Button ID="Button1" runat="server" Text="查询" CausesValidation="False" CommandName="Select" />
     <br />
     <br />
-    <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="Te_ID" DataSourceID="SqlDataSource1" Font-Size="12px" ShowFooter="True">
+    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Stu_ID" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" ShowFooter="True" Font-Size="12px">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
             <asp:TemplateField HeaderText="选项">
@@ -29,42 +30,42 @@
                     &nbsp;<asp:LinkButton ID="lbInsert" runat="server" OnClick="lbInsert_Click" ValidationGroup="Insert">添加</asp:LinkButton>
                 </FooterTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="职工号" SortExpression="Te_ID">
+            <asp:TemplateField HeaderText="学号" SortExpression="Stu_ID">
                 <EditItemTemplate>
-                    <asp:Label ID="dlTe_ID" runat="server" Text='<%# Eval("Te_ID") %>' Width="50px"></asp:Label>
+                    <asp:Label ID="txtStu_ID" runat="server" Text='<%# Eval("Stu_ID") %>'></asp:Label>
                 </EditItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="dlTe_ID" runat="server" Text='<%# Bind("Te_ID") %>'></asp:Label>
+                    <asp:Label ID="txtStu_ID" runat="server" Text='<%# Bind("Stu_ID") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="txtTe_ID" runat="server" Width="50px" MaxLength="5"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvID" runat="server" ErrorMessage="不能为空" Text="*" ForeColor="Red" ControlToValidate="txtTe_ID" ValidationGroup="Insert"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="txtStu_ID" runat="server" Width="50px" MaxLength="5"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvStu_ID" runat="server" ErrorMessage="不能为空" ControlToValidate="txtStu_ID" ValidationGroup="Insert" Text="*" ForeColor="Red"></asp:RequiredFieldValidator>
                 </FooterTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="密码" SortExpression="Pwd">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Pwd") %>' Width="50px" MaxLength="20"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="不能为空" Text="*" ForeColor="Red" ControlToValidate="TextBox1" ValidationGroup="Edit"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="txtPwd" runat="server" Text='<%# Bind("Pwd") %>' Width="50px" MaxLength="20"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvPwd" runat="server" ErrorMessage="不能为空" ControlToValidate="txtPwd" ValidationGroup="Edit" Text="*" ForeColor="Red"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("Pwd") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
                     <asp:TextBox ID="txtPwd" runat="server" Width="50px" MaxLength="20"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvPwd" runat="server" ErrorMessage="不能为空" Text="*" ForeColor="Red" ControlToValidate="txtPwd" ValidationGroup="Insert"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvPwd" runat="server" ErrorMessage="不能为空" ControlToValidate="txtPwd" ValidationGroup="Insert" Text="*" ForeColor="Red"></asp:RequiredFieldValidator>
                 </FooterTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="姓名" SortExpression="Name">
+            <asp:TemplateField HeaderText="姓名" SortExpression="Stu_Name">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Name") %>' Width="50px" MaxLength="20"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="不能为空" Text="*" ForeColor="Red" ControlToValidate="TextBox2" ValidationGroup="Edit"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Stu_Name") %>' Width="50px" MaxLength="20"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvName" runat="server" ErrorMessage="不能为空" ForeColor="Red" ValidationGroup="Edit" Text="*" ControlToValidate="TextBox2"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("Stu_Name") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
                     <asp:TextBox ID="txtName" runat="server" Width="50px" MaxLength="20"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvName" runat="server" ErrorMessage="不能为空" Text="*" ForeColor="Red" ControlToValidate="txtName" ValidationGroup="Insert"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvName" runat="server" ErrorMessage="不能为空" ForeColor="Red" ControlToValidate="txtName" ValidationGroup="Insert" Text="*"></asp:RequiredFieldValidator>
                 </FooterTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="性别" SortExpression="Gender">
@@ -95,13 +96,13 @@
                     <asp:Label ID="Label5" runat="server" Text='<%# Bind("Email") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="txtEmail" runat="server" Width="100px"></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" runat="server" Width="100px" MaxLength="50"></asp:TextBox>
                 </FooterTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="部门" SortExpression="Dpt">
+            <asp:TemplateField HeaderText="学院" SortExpression="Dpt">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Dpt") %>' Width="60px" MaxLength="20"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="不能为空" Text="*" ForeColor="Red" ControlToValidate="TextBox5" ValidationGroup="Edit"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="不能为空" ControlToValidate="TextBox5" Text="*" ValidationGroup="Edit" ForeColor="Red"></asp:RequiredFieldValidator>
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label6" runat="server" Text='<%# Bind("Dpt") %>'></asp:Label>
@@ -111,15 +112,26 @@
                     <asp:RequiredFieldValidator ID="rfvDpt" runat="server" ErrorMessage="不能为空" Text="*" ForeColor="Red" ControlToValidate="txtDpt" ValidationGroup="Insert"></asp:RequiredFieldValidator>
                 </FooterTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="手机号" SortExpression="Phone">
+            <asp:TemplateField HeaderText="专业" SortExpression="Major">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Phone") %>' Width="80px" MaxLength="20"></asp:TextBox>
+                    <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Major") %>' Width="60px" MaxLength="20"></asp:TextBox>
                 </EditItemTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="Label7" runat="server" Text='<%# Bind("Phone") %>' MaxLength="20"></asp:Label>
+                    <asp:Label ID="Label7" runat="server" Text='<%# Bind("Major") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="txtPhone" runat="server" Width="80px"></asp:TextBox>
+                    <asp:TextBox ID="txtMajor" runat="server" Width="60px" MaxLength="20"></asp:TextBox>
+                </FooterTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="手机号" SortExpression="Phone">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Phone") %>' Width="80px" MaxLength="20"></asp:TextBox>
+                </EditItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label8" runat="server" Text='<%# Bind("Phone") %>'></asp:Label>
+                </ItemTemplate>
+                <FooterTemplate>
+                    <asp:TextBox ID="txtPhone" runat="server" Width="80px" MaxLength="20"></asp:TextBox>
                 </FooterTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="操作">
@@ -131,7 +143,6 @@
                     &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消" Font-Size="12px"></asp:LinkButton>
                 </EditItemTemplate>
             </asp:TemplateField>
-
         </Columns>
         <EditRowStyle BackColor="#999999" />
         <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -145,38 +156,39 @@
         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
     </asp:GridView>
     <asp:Label ID="lblTooltip" runat="server" Style="font-size: 12pt; color: red; font-family: 宋体;"></asp:Label>
-
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:schoolConnectionString %>"
-        DeleteCommand="DELETE FROM [Teacher] WHERE [Te_ID] = @Te_ID"
-        InsertCommand="INSERT INTO [Teacher] ([Te_ID], [Pwd], [Name], [Gender], [Email], [Dpt], [Phone]) VALUES (@Te_ID, @Pwd, @Name, @Gender, @Email, @Dpt, @Phone)"
-        SelectCommand="SELECT Te_ID, Pwd, Name, Gender, Email, Dpt, Phone FROM Teacher WHERE (Te_ID LIKE '%' + @Te_ID + '%') AND (Name LIKE '%' + @Name + '%') AND (Dpt LIKE '%' + @Dpt + '%')"
-        UpdateCommand="UPDATE [Teacher] SET [Pwd] = @Pwd, [Name] = @Name, [Gender] = @Gender, [Email] = @Email, [Dpt] = @Dpt, [Phone] = @Phone WHERE [Te_ID] = @Te_ID">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:schoolConnectionString %>" 
+        DeleteCommand="DELETE FROM [Student] WHERE [Stu_ID] = @Stu_ID" 
+        InsertCommand="INSERT INTO [Student] ([Stu_ID], [Pwd], [Stu_Name], [Gender], [Email], [Dpt], [Major], [Phone]) VALUES (@Stu_ID, @Pwd, @Stu_Name, @Gender, @Email, @Dpt, @Major, @Phone)"
+        SelectCommand="SELECT * FROM [Student] WHERE (Stu_ID LIKE '%' + @Stu_ID + '%') AND (Stu_Name LIKE '%' + @Stu_Name + '%') AND (Dpt LIKE '%' + @Dpt + '%')"
+        UpdateCommand="UPDATE [Student] SET [Pwd] = @Pwd, [Stu_Name] = @Stu_Name, [Gender] = @Gender, [Email] = @Email, [Dpt] = @Dpt, [Major] = @Major, [Phone] = @Phone WHERE [Stu_ID] = @Stu_ID">
         <DeleteParameters>
-            <asp:Parameter Name="Te_ID" Type="String" />
+            <asp:Parameter Name="Stu_ID" Type="String" />
         </DeleteParameters>
-        <SelectParameters>
-            <asp:ControlParameter ControlID="txtTe_ID" Name="Te_ID" PropertyName="Text" Type="String" ConvertEmptyStringToNull="false" />
-            <asp:ControlParameter ControlID="txtName" Name="Name" PropertyName="Text" Type="String" ConvertEmptyStringToNull="false" />
-            <asp:ControlParameter ControlID="txtDpt" Name="Dpt" PropertyName="Text" Type="String" ConvertEmptyStringToNull="false" />
-        </SelectParameters>
         <InsertParameters>
-            <asp:Parameter Name="Te_ID" Type="String" />
+            <asp:Parameter Name="Stu_ID" Type="String" />
             <asp:Parameter Name="Pwd" Type="String" />
-            <asp:Parameter Name="Name" Type="String" />
+            <asp:Parameter Name="Stu_Name" Type="String" />
             <asp:Parameter Name="Gender" Type="String" />
             <asp:Parameter Name="Email" Type="String" />
             <asp:Parameter Name="Dpt" Type="String" />
+            <asp:Parameter Name="Major" Type="String" />
             <asp:Parameter Name="Phone" Type="String" />
         </InsertParameters>
         <UpdateParameters>
             <asp:Parameter Name="Pwd" Type="String" />
-            <asp:Parameter Name="Name" Type="String" />
+            <asp:Parameter Name="Stu_Name" Type="String" />
             <asp:Parameter Name="Gender" Type="String" />
             <asp:Parameter Name="Email" Type="String" />
             <asp:Parameter Name="Dpt" Type="String" />
+            <asp:Parameter Name="Major" Type="String" />
             <asp:Parameter Name="Phone" Type="String" />
-            <asp:Parameter Name="Te_ID" Type="String" />
+            <asp:Parameter Name="Stu_ID" Type="String" />
         </UpdateParameters>
+        <SelectParameters>
+            <asp:ControlParameter ControlID="txtStu_ID" Name="Stu_ID" PropertyName="Text" Type="String" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter ControlID="txtName" Name="Stu_Name" PropertyName="Text" Type="String" ConvertEmptyStringToNull="false" />
+            <asp:ControlParameter ControlID="txtDpt" Name="Dpt" PropertyName="Text" Type="String" ConvertEmptyStringToNull="false" />
+        </SelectParameters>
     </asp:SqlDataSource>
 </asp:Content>
 
