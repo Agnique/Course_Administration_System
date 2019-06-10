@@ -17,7 +17,7 @@
     <asp:Button ID="Button1" runat="server" Text="查询" CausesValidation="False" CommandName="Select" />
     <br />
     <br />
-    <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="Te_ID" DataSourceID="SqlDataSource1" Font-Size="12px" ShowFooter="True">
+    <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="Te_ID" DataSourceID="SqlDataSource1" Font-Size="12px" ShowFooter="True" Width="100%">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
             <asp:TemplateField HeaderText="选项">

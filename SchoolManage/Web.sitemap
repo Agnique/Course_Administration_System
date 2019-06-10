@@ -11,6 +11,7 @@
       <siteMapNode title="学生信息管理" description="Edit Student" url="EditStudent.aspx" />
       <siteMapNode title="课程信息管理" description="Edit Course" url="EditCourse.aspx" />
       <siteMapNode title="选课信息管理" description="Edit Registered Course" url="EditRegister.aspx" />
+      <siteMapNode title="作业信息管理" description="Edit Homework" url="EditHomework.aspx" />
     </siteMapNode>
 
     <siteMapNode title="教师个人中心"  description="Teacher" url="">
