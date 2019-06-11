@@ -49,13 +49,13 @@ public partial class _Default : System.Web.UI.Page
         cn.Open();
         string strsql = "SELECT * FROM Course WHERE Cs_ID = @Cs_ID AND Te_ID = @Te_ID";
         SqlCommand cm = new SqlCommand(strsql, cn);
-        cm.Parameters.Add(new SqlParameter("@Cs_ID", SqlDbType.Char, 5));
+        cm.Parameters.Add(new SqlParameter("@Cs_ID", SqlDbType.Char, 9));
         cm.Parameters.Add(new SqlParameter("@Te_ID", SqlDbType.Char, 5));
-        cm.Parameters["@Te_ID"].Value = Session["UserName"];
-        cm.Parameters["@Cs_ID"].Value = ((TextBox)GridView1.FooterRow.FindControl("txtCs_ID")).Text.Trim(); ;
+        cm.Parameters["@Te_ID"].Value = Session["UserName"].ToString();
+        cm.Parameters["@Cs_ID"].Value = ((TextBox)GridView1.FooterRow.FindControl("txtCs_ID")).Text.Trim();
 
         SqlDataReader dr = cm.ExecuteReader();
-        if (!dr.Read())
+        if (dr.Read())
         {
             try
             {
@@ -82,12 +82,12 @@ public partial class _Default : System.Web.UI.Page
             {
                 try
                 {
-                    SqlDataSource1.DeleteParameters["Hw_ID"].DefaultValue = ((Label)GridView1.Rows[i].FindControl("Hw_ID")).Text;
+                    SqlDataSource1.DeleteParameters["Hw_ID"].DefaultValue = ((Label)GridView1.Rows[i].FindControl("txtHw_ID")).Text;
                     SqlDataSource1.Delete();
                 }
                 catch (SqlException)
                 {
-                    lblTooltip.Text = string.Format("无法删除作业号为‘{0}'的作业信息！", ((Label)GridView1.Rows[i].FindControl("Hw_ID")).Text);
+                    lblTooltip.Text = string.Format("无法删除作业号为‘{0}'的作业信息！", ((Label)GridView1.Rows[i].FindControl("txtHw_ID")).Text);
                 }
             }
         }
@@ -96,11 +96,13 @@ public partial class _Default : System.Web.UI.Page
 
     protected void lbUpdate_Click(object sender, EventArgs e)
     {
+
         try
         {
             SqlDataSource2.UpdateParameters["Handin"].DefaultValue = ((TextBox)DetailsView1.FindControl("txtHandin")).Text.Trim();
             SqlDataSource2.UpdateParameters["Hw"].DefaultValue = ((TextBox)DetailsView1.FindControl("txtHw")).Text.Trim();
-            SqlDataSource2.Insert();
+            SqlDataSource2.Update();
+            DetailsView1.ChangeMode(DetailsViewMode.ReadOnly);
             lblTooltip1.Text = "更新成功！";
         }
         catch(SqlException)

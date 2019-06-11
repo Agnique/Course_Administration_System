@@ -8,6 +8,15 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="Server">
+    课程号:   
+    <asp:TextBox ID="txtCs_ID" runat="server" Width="100px"></asp:TextBox>
+    &nbsp;课程名：
+    <asp:TextBox ID="txtName" runat="server" Width="100px"></asp:TextBox>
+    &nbsp;周次: 
+    <asp:TextBox ID="txtWeek" runat="server" Width="50px"></asp:TextBox>
+    <asp:Button ID="Button1" runat="server" Text="查询" CausesValidation="False" />
+    <br />
+    <br />
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Hw_ID" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" ShowFooter="True" Width="100%" Font-Size="12px">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
@@ -90,11 +99,12 @@
         <SortedDescendingCellStyle BackColor="#FFFDF8" />
         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
     </asp:GridView>
+    <br />
     <asp:Label ID="lblTooltip" runat="server" Style="font-size: 12pt; color: red; font-family: 宋体;"></asp:Label>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:schoolConnectionString %>" SelectCommand="SELECT Homework.Cs_ID, Cs_Name, Hw_ID, Hw_Week, Handout, Handin
 FROM Homework JOIN Course ON Course.Cs_ID = Homework.Cs_ID
 JOIN Teacher ON Course.Te_ID = Teacher.Te_ID
-WHERE Teacher.Te_ID = @Te_ID"
+WHERE Teacher.Te_ID = @Te_ID AND Homework.Cs_ID LIKE '%'+@Cs_ID+'%' AND Cs_Name LIKE '%'+@Cs_Name+'%' AND Hw_Week LIKE '%'+@Hw_Week+'%'"
         DeleteCommand="DELETE FROM Homework WHERE Hw_ID = @Hw_ID" InsertCommand="INSERT INTO Homework (Hw_ID, Cs_ID, Hw_Week, Handout, Handin) VALUES (@Hw_ID, @Cs_ID, @Hw_Week, @Handout, @Handin)" UpdateCommand="UPDATE Homework SET Handin = @Handin WHERE Hw_ID = @Hw_ID">
         <DeleteParameters>
             <asp:Parameter Name="Hw_ID" />
@@ -108,6 +118,9 @@ WHERE Teacher.Te_ID = @Te_ID"
         </InsertParameters>
         <SelectParameters>
             <asp:SessionParameter Name="Te_ID" SessionField="UserName" />
+            <asp:ControlParameter ControlID="txtCs_ID" Name="Cs_ID" PropertyName="Text" ConvertEmptyStringToNull="False" />
+            <asp:ControlParameter ControlID="txtName" Name="Cs_Name" PropertyName="Text" ConvertEmptyStringToNull="False" />
+            <asp:ControlParameter ControlID="txtWeek" Name="Hw_Week" PropertyName="Text" ConvertEmptyStringToNull="False" />
         </SelectParameters>
         <UpdateParameters>
             <asp:Parameter Name="Handin" />
@@ -180,7 +193,11 @@ WHERE Teacher.Te_ID = @Te_ID"
         <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
     </asp:DetailsView>
     <asp:Label ID="lblTooltip1" runat="server" Style="font-size: 12pt; color: red; font-family: 宋体;"></asp:Label>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:schoolConnectionString %>" DeleteCommand="DELETE FROM [Homework] WHERE [Hw_ID] = @Hw_ID" InsertCommand="INSERT INTO [Homework] ([Hw_ID], [Hw]) VALUES (@Hw_ID, @Hw)" SelectCommand="SELECT [Hw_ID],[Handout],[Handin],[Hw] FROM [Homework] WHERE ([Hw_ID] = @Hw_ID)" UpdateCommand="UPDATE [Homework] SET [Hw] = @Hw, [Handin] = @Handin WHERE [Hw_ID] = @Hw_ID">
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:schoolConnectionString %>"
+        DeleteCommand="DELETE FROM [Homework] WHERE [Hw_ID] = @Hw_ID"
+        InsertCommand="INSERT INTO [Homework] ([Hw_ID], [Hw]) VALUES (@Hw_ID, @Hw)"
+        SelectCommand="SELECT [Hw_ID],[Handout],[Handin],[Hw] FROM [Homework] WHERE ([Hw_ID] = @Hw_ID)"
+        UpdateCommand="UPDATE [Homework] SET [Hw] = @Hw, [Handin] = @Handin WHERE [Hw_ID] = @Hw_ID">
         <DeleteParameters>
             <asp:Parameter Name="Hw_ID" Type="String" />
         </DeleteParameters>
@@ -194,7 +211,7 @@ WHERE Teacher.Te_ID = @Te_ID"
         <UpdateParameters>
             <asp:Parameter Name="Hw" />
             <asp:Parameter Name="Handin" />
-            <asp:Parameter Name="Hw_ID" Type="String" />
+            <asp:ControlParameter ControlID="GridView1" Name="Hw_ID" PropertyName="SelectedValue" Type="String" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <br />
