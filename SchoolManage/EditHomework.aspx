@@ -137,7 +137,7 @@
         </UpdateParameters>
     </asp:SqlDataSource>
     <br />
-    <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" CellPadding="4" DataKeyNames="Hw_ID" DataSourceID="SqlDataSource3" ForeColor="#333333" GridLines="None" Height="50px" Width="100%" AllowPaging="True" OnPageIndexChanging="DetailsView1_PageIndexChanging" Font-Size="12px">
+    <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" CellPadding="4" DataKeyNames="Hw_ID" DataSourceID="SqlDataSource3" ForeColor="#333333" GridLines="None" Height="50px" Width="100%" AllowPaging="True" OnPageIndexChanging="DetailsView1_PageIndexChanging" Font-Size="12px" EmptyDataText="暂无选中作业信息!">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <CommandRowStyle BackColor="#E2DED6" Font-Bold="True" />
         <EditRowStyle BackColor="#999999" />
@@ -369,7 +369,7 @@ VALUES (@Stu_Hw_ID,@Hw_ID, @Stu_ID, @Handin, @Status,@Grade_Time)"
             </asp:TemplateField>
             <asp:TemplateField HeaderText="提交内容" SortExpression="Handin_Homework">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Handin_Homework") %>' Width="80%" Height="50px" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox ID="txtHandinHomework" runat="server" Text='<%# Bind("Handin_Homework") %>' Width="80%" Height="50px" TextMode="MultiLine"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Handin_Homework") %>'></asp:TextBox>
@@ -402,7 +402,7 @@ VALUES (@Stu_Hw_ID,@Hw_ID, @Stu_ID, @Handin, @Status,@Grade_Time)"
             </asp:TemplateField>
             <asp:TemplateField HeaderText="教师评语" SortExpression="Comment">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Comment") %>' Width="80%" Height="30px" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox ID="txtComment" runat="server" Text='<%# Bind("Comment") %>' Width="80%" Height="30px" TextMode="MultiLine"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Comment") %>'></asp:TextBox>
@@ -413,7 +413,7 @@ VALUES (@Stu_Hw_ID,@Hw_ID, @Stu_ID, @Handin, @Status,@Grade_Time)"
             </asp:TemplateField>
             <asp:TemplateField HeaderText="成绩" SortExpression="Grade">
                 <EditItemTemplate>
-                    <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Grade") %>' Width="80%"></asp:TextBox>
+                    <asp:TextBox ID="txtGrade" runat="server" Text='<%# Bind("Grade") %>' Width="80%"></asp:TextBox>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("Grade") %>'></asp:TextBox>
@@ -444,7 +444,7 @@ VALUES (@Stu_Hw_ID,@Hw_ID, @Stu_ID, @Handin, @Status,@Grade_Time)"
 FROM StudentHomework
 JOIN Student ON Student.Stu_ID = StudentHomework.Stu_ID
 WHERE Stu_Hw_ID = @Stu_Hw_ID"
-        UpdateCommand="UPDATE StudentHomewrok SET Handin_Homework = @Handin_Homework, Comment = @Comment
+        UpdateCommand="UPDATE StudentHomework SET Handin_Homework = @Handin_Homework, Comment = @Comment, Grade=@Grade
 WHERE Stu_Hw_ID = @Stu_Hw_ID">
         <SelectParameters>
             <asp:ControlParameter ControlID="GridView2" Name="Stu_Hw_ID" PropertyName="SelectedValue" />
@@ -452,6 +452,7 @@ WHERE Stu_Hw_ID = @Stu_Hw_ID">
         <UpdateParameters>
             <asp:Parameter Name="Handin_Homework" />
             <asp:Parameter Name="Comment" />
+            <asp:Parameter Name="Grade" />
             <asp:ControlParameter ControlID="GridView2" Name="Stu_Hw_ID" PropertyName="SelectedValue" />
         </UpdateParameters>
     </asp:SqlDataSource>

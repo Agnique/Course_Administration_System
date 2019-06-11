@@ -14,7 +14,7 @@
     <asp:TextBox ID="txtName" runat="server" Width="50px"></asp:TextBox>
     &nbsp;学院: 
     <asp:TextBox ID="txtDpt" runat="server" Width="70px"></asp:TextBox>
-    <asp:Button ID="Button1" runat="server" Text="查询" CausesValidation="False" CommandName="Select" />
+    <asp:Button ID="Button1" runat="server" Text="查询" CausesValidation="False" CommandName="Select" OnClick="Button1_Click" />
     <br />
     <br />
     <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="Te_ID" DataSourceID="SqlDataSource1" Font-Size="12px" ShowFooter="True" Width="100%">

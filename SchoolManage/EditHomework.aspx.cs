@@ -34,16 +34,16 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void lbInsert1_Click(object sender, EventArgs e)
     {
+
         SqlDataSource2.InsertParameters["Stu_Hw_ID"].DefaultValue = ((TextBox)GridView2.FooterRow.FindControl("txtStu_Hw_ID")).Text.Trim();
         SqlDataSource2.InsertParameters["Stu_ID"].DefaultValue = ((TextBox)GridView2.FooterRow.FindControl("txtStu_ID")).Text.Trim();
-        SqlDataSource2.InsertParameters["Status"].DefaultValue = ((DropDownList)GridView2.FooterRow.FindControl("dlStatus")).SelectedValue;
         SqlDataSource2.InsertParameters["Handin"].DefaultValue = ((TextBox)GridView2.FooterRow.FindControl("txtHandin")).Text.Trim();
         SqlDataSource2.InsertParameters["Grade_Time"].DefaultValue = ((TextBox)GridView2.FooterRow.FindControl("txtGrade_Time")).Text.Trim();
+        SqlDataSource2.InsertParameters["Status"].DefaultValue = ((DropDownList)GridView2.FooterRow.FindControl("dlStatus")).SelectedValue;
         
         try
         {
             SqlDataSource2.Insert();
-            lblTooltip1.Text = "添！";
         }
         catch (SqlException)
         {
