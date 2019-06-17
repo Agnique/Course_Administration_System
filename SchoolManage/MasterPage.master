@@ -29,7 +29,47 @@
         .text {
             font-size: x-small;
         }
+
+        .container {
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+        }
+
+        .very {
+            background-color: gray;
+            color: white;
+        }
+
+        .weak {
+            background-color: darkred;
+            color: white;
+        }
+
+        .average {
+            background-color: darkorange;
+            color: white;
+        }
+
+        .good {
+            background-color: steelblue;
+            color: white;
+        }
+
+        .excellent {
+            background-color: seagreen;
+            color: white;
+        }
+
+        .barline {
+            border-style: solid;
+            border-width: 1px;
+            width: 150px;
+            padding: 2px;
+        }
     </style>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
