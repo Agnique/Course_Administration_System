@@ -25,8 +25,7 @@
       <siteMapNode title="编辑个人信息" description="Edit Info" url="Stu_Info.aspx" />
       <siteMapNode title="在线选课" description="Register Course" url="Register_Course.aspx" />
       <siteMapNode title="已选课程" description="Registered Course" url="Stu_Course.aspx" />
-      <siteMapNode title="查看作业" description="Check Homework" url="Stu_Homework.aspx" />
-      <siteMapNode title="上交作业" description="Handin Homework" url="Handin_Homework.aspx" />
+      <siteMapNode title="作业中心" description="Check Homework" url="Stu_Homework.aspx" />
     </siteMapNode>
 
 
