@@ -24,7 +24,7 @@
                     <asp:CheckBox ID="chkSelectRow" runat="server" />
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:LinkButton ID="lbDelete" runat="server" CausesValidation="False" OnClick="lbDelete_Click" Text="删除" Font-Size="12px"></asp:LinkButton>
+                    <asp:LinkButton ID="lbDelete" runat="server" CausesValidation="False" OnClick="lbDelete_Click" Text="删除" Font-Size="12px" OnClientClick="return confirm('是否确定删除？')"></asp:LinkButton>
                     &nbsp;<asp:LinkButton ID="lbInsert" runat="server" OnClick="lbInsert_Click" ValidationGroup="Insert" Font-Size="12px" Text="添加"></asp:LinkButton>
                 </FooterTemplate>
             </asp:TemplateField>
@@ -36,7 +36,7 @@
                     <asp:Label ID="txtAccount" runat="server" Text='<%# Bind("Account") %>'></asp:Label>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:TextBox ID="txtAccount" runat="server" Width="50px" MaxLength="5"></asp:TextBox>
+                    <asp:TextBox ID="txtAccount" runat="server" Width="50px" MaxLength="20"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfvAccount" runat="server" ErrorMessage="不能为空" Text="*" ForeColor="Red" ValidationGroup="Insert" ControlToValidate="txtAccount"></asp:RequiredFieldValidator>
                 </FooterTemplate>
             </asp:TemplateField>

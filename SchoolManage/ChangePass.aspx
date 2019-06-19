@@ -72,13 +72,12 @@
         function PasswordValidate() {
             
             if (document.getElementById("<%=NewPassword.ClientID %>").value.length >= 6) {
-                if ($find("myPSBID")._getPasswordStrength() > 50) {
+                if ($find("myPSBID")._getPasswordStrength() < 50) {
                     alert("密码强度必须达到中度！");
                     return false;
                 }
                 else {
-                    alert("密码强度必须达到中度！");
-                    return false;
+                    return true;
                 }
             }
             else {

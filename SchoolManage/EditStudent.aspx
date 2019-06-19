@@ -26,7 +26,7 @@
                     <asp:CheckBox ID="chkSelectRow" runat="server" />
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:LinkButton ID="lbDelete" runat="server" CausesValidation="False" OnClick="lbDelete_Click" Text="删除" Font-Size="12px"></asp:LinkButton>
+                    <asp:LinkButton ID="lbDelete" runat="server" CausesValidation="False" OnClick="lbDelete_Click" Text="删除" Font-Size="12px" OnClientClick="return confirm('是否确定删除？')"></asp:LinkButton>
                     &nbsp;<asp:LinkButton ID="lbInsert" runat="server" OnClick="lbInsert_Click" ValidationGroup="Insert">添加</asp:LinkButton>
                 </FooterTemplate>
             </asp:TemplateField>

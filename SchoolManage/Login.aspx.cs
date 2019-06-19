@@ -60,10 +60,17 @@ public partial class _Default : System.Web.UI.Page
 
             if (dr.Read())
             {
+                conn.Close();
                 Session["branch"] = branch;
                 Session["UserName"] = UserName;
                 if (Session["branch"].ToString() == "a")
                 {
+                    conn.Open();
+                    string strsql4 = string.Format("UPDATE Users SET Last_login='{0}'  WHERE Account='{1}'",DateTime.Now.ToString(), UserName);
+                    SqlCommand cm2 = new SqlCommand(strsql4, conn);
+                    cm2.ExecuteNonQuery();
+
+                    conn.Close();
                     Response.Redirect("EditUser.aspx");
                 }
                 else if (Session["branch"].ToString() == "t")
